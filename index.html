@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crónicas Asfálticas - Portfolio de fotografía: calle, naturaleza y paisajes">
+    <meta name="theme-color" content="#0d0d0d">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="MEMENTO. - Crónicas Asfálticas">
+    <meta property="og:description" content="Fotografía callejera, naturaleza y paisajes minimalistas">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MEMENTO. - Crónicas Asfálticas">
+    
+    <title>MEMENTO. - Fotografía Callejera, Naturaleza y Paisajes</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg-color: #0d0d0d;
+            --bg-secondary: #141414;
+            --text-main: #f5f5f5;
+            --text-muted: #7a7a7a;
+            --border-color: #1a1a1a;
+            --accent-color: #ffffff;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            --gap-large: 180px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #fafafa;
+                --bg-secondary: #f0f0f0;
+                --text-main: #1a1a1a;
+                --text-muted: #757575;
+                --border-color: #e0e0e0;
+                --accent-color: #000000;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- HEADER --- */
+        header {
+            width: 100%;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            mix-blend-mode: difference;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(122, 122, 122, 0.1);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform var(--transition-smooth);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a, .filter-btn {
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: opacity var(--transition-smooth);
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+        }
+
+        nav a::after, .filter-btn::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--text-main);
+            transition: width var(--transition-smooth);
+        }
+
+        nav a:hover::after, .filter-btn:hover::after {
+            width: 100%;
+        }
+
+        .filter-btn.active::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeInHero 0.8s ease-out;
+        }
+
+        @keyframes fadeInHero {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            word-spacing: 100vw;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--text-muted);
+            max-width: 520px;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            border: 1px solid var(--text-muted);
+            border-radius: 4px;
+            color: var(--text-muted);
+            transition: all var(--transition-smooth);
+        }
+
+        .filter-btn:hover {
+            color: var(--text-main);
+            border-color: var(--text-main);
+        }
+
+        .filter-btn.active {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            border-color: var(--text-main);
+        }
+
+        /* --- GALERÍA --- */
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 150px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .frame {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            opacity: 0;
+            animation: slideInFrame 0.6s ease-out forwards;
+            cursor: pointer;
+            transition: transform var(--transition-smooth);
+        }
+
+        .frame:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes slideInFrame {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .frame.hidden {
+            display: none;
+        }
+
+        .img-wrapper {
+            overflow: hidden;
+            background-color: var(--bg-secondary);
+            position: relative;
+            aspect-ratio: 4 / 3;
+            border-radius: 4px;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(115%) brightness(95%);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .img-wrapper.foto-color img {
+            filter: grayscale(25%) saturate(65%) contrast(110%) brightness(90%);
+        }
+
+        .frame:hover .img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .meta {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .meta-title {
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        .meta-category {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 40px;
+            border-top: 1px solid var(--border-color);
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p:last-child {
+            font-style: italic;
+        }
+
+        /* --- THEME TOGGLE --- */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform var(--transition-smooth);
+            padding: 5px;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                padding: 20px;
+                margin-top: 80px;
+            }
+
+            .gallery {
+                padding: 0 20px 100px 20px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 40px 20px;
+            }
+
+            .filter-container {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">MEMENTO.</a>
+        <nav>
+            <a href="#contacto">CONTACTO</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Crónicas<br>Asfálticas.</h1>
+            <p>Fragmentos efímeros de orden y caos. Una mirada fija a la estática de la calle, la serenidad de la naturaleza y la grandiosidad de los paisajes. Blanco y negro que desnuda la luz, color sobrio que interviene de forma residual.</p>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="calle">Calle</button>
+                <button class="filter-btn" data-filter="naturaleza">Naturaleza</button>
+                <button class="filter-btn" data-filter="paisajes">Paisajes</button>
+            </div>
+        </section>
+
+        <section class="gallery" aria-label="Galería de fotografías">
+
+            <!-- FOTOGRAFÍA CALLEJERA (7 fotos) -->
+            <article class="frame" data-category="calle">
+                <div class="img-wrapper">
+                    <img src="fotos/calle-01.jpg" alt="Sombra fugaz - Fotografía callejera" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">01. Sombra fugaz</span>
+                    <span class="meta-category">Bogotá — 2026</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="calle">
+                <div class="img-wrapper">
+                    <img src="fotos/calle-02.jpg" alt="Geometría urbana" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">02. Geometría urbana</span>
+                    <span class="meta-category">Líneas y formas</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="calle">
+                <div class="img-wrapper">
+                    <img src="fotos/calle-03.jpg" alt="Intersecciones urbanas" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">03. Intersecciones</span>
+                    <span class="meta-category">Grano y textura</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="calle">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/calle-04.jpg" alt="Luces residuales" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">04. Luces residuales</span>
+                    <span class="meta-category">Cromática residual</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="calle">
+                <div class="img-wrapper">
+                    <img src="fotos/calle-05.jpg" alt="Movimiento urbano" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">05. Movimiento urbano</span>
+                    <span class="meta-category">Dynamismo</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="calle">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/calle-06.jpg" alt="Contraste diario" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">06. Contraste diario</span>
+                    <span class="meta-category">Cotidianidad</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="calle">
+                <div class="img-wrapper">
+                    <img src="fotos/calle-07.jpg" alt="Encuentro casual" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">07. Encuentro casual</span>
+                    <span class="meta-category">Instante decisivo</span>
+                </div>
+            </article>
+
+            <!-- FOTOGRAFÍA NATURALEZA (6 fotos) -->
+            <article class="frame" data-category="naturaleza">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/naturaleza-01.jpg" alt="Flora silenciosa" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">08. Flora silenciosa</span>
+                    <span class="meta-category">Verde mínimo</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="naturaleza">
+                <div class="img-wrapper">
+                    <img src="fotos/naturaleza-02.jpg" alt="Raíces y líneas" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">09. Raíces y líneas</span>
+                    <span class="meta-category">Detalle natural</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="naturaleza">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/naturaleza-03.jpg" alt="Agua en reposo" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">10. Agua en reposo</span>
+                    <span class="meta-category">Serenidad</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="naturaleza">
+                <div class="img-wrapper">
+                    <img src="fotos/naturaleza-04.jpg" alt="Texturas orgánicas" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">11. Texturas orgánicas</span>
+                    <span class="meta-category">Macrofotografía</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="naturaleza">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/naturaleza-05.jpg" alt="Luz filtrada" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">12. Luz filtrada</span>
+                    <span class="meta-category">Bosque íntimo</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="naturaleza">
+                <div class="img-wrapper">
+                    <img src="fotos/naturaleza-06.jpg" alt="Equilibrio natural" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">13. Equilibrio natural</span>
+                    <span class="meta-category">Armonía</span>
+                </div>
+            </article>
+
+            <!-- FOTOGRAFÍA PAISAJES (7 fotos) -->
+            <article class="frame" data-category="paisajes">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/paisaje-01.jpg" alt="Horizonte infinito" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">14. Horizonte infinito</span>
+                    <span class="meta-category">Vastedad</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="paisajes">
+                <div class="img-wrapper">
+                    <img src="fotos/paisaje-02.jpg" alt="Montaña austera" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">15. Montaña austera</span>
+                    <span class="meta-category">Geometría natural</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="paisajes">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/paisaje-03.jpg" alt="Atardecer contemplativo" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">16. Atardecer contemplativo</span>
+                    <span class="meta-category">Luz dorada</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="paisajes">
+                <div class="img-wrapper">
+                    <img src="fotos/paisaje-04.jpg" alt="Valles profundos" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">17. Valles profundos</span>
+                    <span class="meta-category">Profundidad</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="paisajes">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/paisaje-05.jpg" alt="Cielo dramático" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">18. Cielo dramático</span>
+                    <span class="meta-category">Tormenta</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="paisajes">
+                <div class="img-wrapper">
+                    <img src="fotos/paisaje-06.jpg" alt="Capas de tierra" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">19. Capas de tierra</span>
+                    <span class="meta-category">Estratificación</span>
+                </div>
+            </article>
+
+            <article class="frame" data-category="paisajes">
+                <div class="img-wrapper foto-color">
+                    <img src="fotos/paisaje-07.jpg" alt="Calma primaveral" loading="lazy" decoding="async">
+                </div>
+                <div class="meta">
+                    <span class="meta-title">20. Calma primaveral</span>
+                    <span class="meta-category">Paz</span>
+                </div>
+            </article>
+
+            <div class="no-results" style="display: none;">
+                No hay fotografías en esta categoría
+            </div>
+
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div>
+            <p>&copy; 2026 — Selección Limitada.</p>
+        </div>
+        <div>
+            <p>Menos es más.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- THEME TOGGLE ---
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function setTheme(isDark) {
+            document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme === 'dark');
+        } else {
+            setTheme(prefersDark.matches);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.style.colorScheme === 'dark';
+            setTheme(!isDark);
+        });
+
+        // --- FILTRO DE FOTOS ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const frames = document.querySelectorAll('.frame');
+        const noResults = document.querySelector('.no-results');
+        const gallery = document.querySelector('.gallery');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Actualizar botones activos
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                let visibleCount = 0;
+
+                // Filtrar frames
+                frames.forEach(frame => {
+                    if (filterValue === 'all' || frame.getAttribute('data-category') === filterValue) {
+                        frame.classList.remove('hidden');
+                        frame.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        frame.classList.add('hidden');
+                        frame.style.display = 'none';
+                    }
+                });
+
+                // Mostrar mensaje si no hay resultados
+                if (visibleCount === 0) {
+                    noResults.style.display = 'grid';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+
+        // --- INTERSECTION OBSERVER PARA ANIMACIONES ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInFrame 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        frames.forEach(frame => {
+            observer.observe(frame);
+        });
+    </script>
+
+</body>
+</html>
